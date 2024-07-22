@@ -148,7 +148,7 @@ module Discard
     #
     # @return [Boolean] true if successful, otherwise false
     def undiscard
-      return unless discarded?
+      return false unless discarded?
       run_callbacks(:undiscard) do
         update_attribute(self.class.discard_column, nil)
       end

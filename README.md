@@ -1,4 +1,4 @@
-# Discard [![Build Status](https://travis-ci.org/jhawthorn/discard.svg?branch=master)](https://travis-ci.org/jhawthorn/discard)
+# Discard [![Test](https://github.com/jhawthorn/discard/actions/workflows/test.yml/badge.svg)](https://github.com/jhawthorn/discard/actions/workflows/test.yml)
 
 Soft deletes for ActiveRecord done right.
 
@@ -264,6 +264,8 @@ hide some records, or mark them as inactive.
 Discard takes a different approach. It doesn't override any ActiveRecord
 methods and instead simply provides convenience methods and scopes for
 discarding (hiding), restoring, and querying records.
+
+You can find more information about the history and purpose of Discard in [this blog post](https://supergood.software/introduction-to-discard/).
 
 ## Development
 
