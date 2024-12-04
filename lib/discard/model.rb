@@ -154,7 +154,7 @@ module Discard
       end
     end
 
-    # Discard the record in the database
+    # Undiscard the record in the database
     #
     # There's a series of callbacks associated with #undiscard!. If the
     # <tt>before_undiscard</tt> callback throws +:abort+ the action is cancelled
@@ -169,11 +169,23 @@ module Discard
     private
 
     def _raise_record_not_discarded
-      raise ::Discard::RecordNotDiscarded.new("Failed to discard the record", self)
+      raise ::Discard::RecordNotDiscarded.new(discarded_fail_message, self)
     end
 
     def _raise_record_not_undiscarded
-      raise ::Discard::RecordNotUndiscarded.new("Failed to undiscard the record", self)
+      raise ::Discard::RecordNotUndiscarded.new(undiscarded_fail_message, self)
+    end
+
+    def discarded_fail_message
+      return "A discarded record cannot be discarded" if discarded?
+
+      "Failed to discard the record"
+    end
+
+    def undiscarded_fail_message
+      return "An undiscarded record cannot be undiscarded" if undiscarded?
+
+      "Failed to undiscard the record"
     end
   end
 end
